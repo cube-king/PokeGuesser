@@ -12,8 +12,12 @@ body {
     src: url('./fonts/Pokemon\ Classic.ttf');
 }
 
-p {
+p, h2 {
     font-family: Pokemon;
+}
+
+h2 {
+    text-shadow: 3px 0px #2e461b;
 }
 
 .micro5 {
@@ -59,6 +63,14 @@ p {
     color:white;
 }
 
+#faq * {
+    margin-left:1vw;
+}
+
+#faq * a {
+    margin-left:0;
+}
+
 #title {
     background:repeating-conic-gradient(#6e6e6e 0% 25%, #8b8b8b 25% 50%);
     background-size: 10px 10px;
@@ -77,4 +89,10 @@ p {
 .partition { 
     width:100%;
     height:90vh;
+}
+
+a {
+    color:white;
+    margin:0;
+    padding:0;
 }

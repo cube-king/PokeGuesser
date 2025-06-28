@@ -25,7 +25,14 @@
                         <div id="controls"> 
                             <input type="text" placeholder="Put your guess here!"></input>
                             <button id="guessbutton">Guess!</button>
+                            <p>Difficulty:</p>
                             <button id="hintbutton">Hint</button>
+                                <select name="difficulty" id="difficulty">
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                    <option value="oneshot">Oneshot</option>
+                                </select>
                         </div>
                     </div>
                     <div id="faq" class="partition">
@@ -33,12 +40,12 @@
                         <p class="answer">Simply enter your guess in the entry field then click the "Guess" button!</p>
                         <h2 class="question">Where can I find the source code for this application?</h2>
                         <p class="answer">The source code for PokeGuess can be found on my GitHub <a href="https://github.com/cube-king/PokeGuesser">here!</a></p>
-                        <h2 class="question"></h2>
-                        <p class="answer"></p>
-                        <h2 class="question"></h2>
-                        <p class="answer"></p>
-                        <h2 class="question"></h2>
-                        <p class="answer"></p>
+                        <h2 class="question">Will typos affect my score?</h2>
+                        <p class="answer">No, but ensure the Pokemon is spelled correctly - the system won't accept it otherwise! Case doesn't matter, though.</p>
+                        <h2 class="question">How is Pokemon retrieval powered?</h2>
+                        <p class="answer">We use the free PokeAPI to get information about Pokemon as well as retrieve a set of them for randomization.</p>
+                        <h2 class="question">What does the "difficulty" setting affect?</h2>
+                        <p class="answer">The difficulty setting affects the specificity of hints as well as the amount of points removed from a wrong guess.</p>
                     </div>
                 </div>
             </div>
