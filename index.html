@@ -7,9 +7,42 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </head>
     <body>
-        
+        <div id="content">
+            <div id="maincontainer"> 
+                <div id="test">
+                    <div id="title" class="partition">
+                        <h1 id="entrytitle" class="micro5">PokeGuess</h1>
+                        <button id="play">PLAY</button> 
+                        <button id="faqbutton">FAQ / RULES</button> 
+                        <p>A site utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
+                        <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
+                    </div>
+                    <div id="game" class="partition">
+                        <div id="gamecontent"></div>
+                        <div id="controls"> 
+                            <input type="text" placeholder="Put your guess here!"></input>
+                            <button id="guessbutton">Guess!</button>
+                            <button id="hintbutton">Hint</button>
+                        </div>
+                    </div>
+                    <div id="faq" class="partition">
+                        <h2 class="question" id="firstquestion">How do I guess?</h2>
+                        <p class="answer">Simply enter your guess in the entry field then click the "Guess" button!</p>
+                        <h2 class="question">Where can I find the source code for this application?</h2>
+                        <p class="answer">The source code for PokeGuess can be found on my GitHub <a href="https://github.com/cube-king/PokeGuesser">here!</a></p>
+                        <h2 class="question"></h2>
+                        <p class="answer"></p>
+                        <h2 class="question"></h2>
+                        <p class="answer"></p>
+                        <h2 class="question"></h2>
+                        <p class="answer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="./script.js" defer></script>
     </body>
-</html>
+</html> 
