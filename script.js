@@ -5,6 +5,7 @@ var allpokemonjson;
 var allpokemon;
 var allspeciesjson;
 var allspecies;
+var pokemontotalamount = 1025;
 var flavortext;
 var pokestat;
 var validinput = false;
@@ -13,6 +14,9 @@ var attainablescore = 1000;
 var guess = 1;
 var randomPokemonId;
 var resettime = false;
+
+const generations = [151, 251, 386, 493, 649, 721, 809, 905, 1025]
+
 $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)")
 $("#play").click(function() {
     $("#test").css("transform", "translateY(-90vh)");
@@ -34,7 +38,7 @@ function randomNumber(min, max) {
 
 async function loadPokemon() {
     $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)");
-    randomPokemonId = randomNumber(1, 1025);
+    randomPokemonId = randomNumber(1, pokemontotalamount);
     var pokejson = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`);
     if (!pokejson.ok) {
         throw new Error(`response status: ${pokejson.status}`);
@@ -55,7 +59,7 @@ async function loadPokemon() {
 
 function tryAgain() {
     guess = 1;
-    bluramt = 16;
+    bluramt = 16; 
     attainablescore = 1000;
     loadPokemon();
     $("#hint1").text("HP Stat: ");
@@ -64,7 +68,11 @@ function tryAgain() {
     $("#pokeidentifier").css("visibility", "hidden");
 }
 
-$("#giveupbutton").click(function() {
+$("#apply").click(function () {
+    tryAgain();
+})
+ 
+$("#giveupbutton").click(function() { 
     resettime = true;
     $("#pokeimage").css("filter", "unset");
     $("#pokeidentifier").text("It's " + pokemon.name + "!");
@@ -158,6 +166,11 @@ async function getAllPokemon() {
     console.log(allpokemon);
     console.log(allspecies);
 }
+
+$("#generation").change(function () { 
+    pokemontotalamount = generations[$(this).val() - 1];
+    console.log(pokemontotalamount);
+});
 
 getAllPokemon();
 loadPokemon();
