@@ -21,6 +21,7 @@
                         <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
                     </div>
                     <div id="game" class="partition">
+                        
                         <div id="gamecontent">
                             <div id="imagebox">
                                 <img src="" id="pokeimage">
@@ -49,6 +50,10 @@
                                     <option value="oneshot">Oneshot</option>
                                 </select>
                             </div>
+                            <div id="set">
+                                <p>Generation (including previous): </p>
+                                <input type="number" id="generation" min="1" max="9" value="9">
+                            </div> 
                             <p id="pointslabel"><b>Points: 0</b></p>
                         </div>
                     </div>
@@ -63,7 +68,11 @@
                         <h2 class="question">How is Pokemon retrieval powered?</h2>
                         <p class="answer">We use the free PokeAPI to get information about Pokemon as well as retrieve a set of them for randomization.</p>
                         <h2 class="question">What does the "difficulty" setting affect?</h2>
-                        <p class="answer">The difficulty setting affects the specificity of hints as well as the amount of points removed from a wrong guess.</p>
+                        <p class="answer">The 'difficulty' setting affects the specificity of hints as well as the amount of points removed from a wrong guess.</p>
+                        <h2 class="question">What does the "set" setting affect?</h2>
+                        <p class="answer">The 'set' setting affects the generation / amount of cards used! We know that newer cards are less familiar, so we added
+                            a feature to control the set used - it's much easier to guess the ones you have a possibility of knowing!
+                        </p>
                     </div>
                 </div>
             </div> 

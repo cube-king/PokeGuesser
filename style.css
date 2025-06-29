@@ -48,7 +48,7 @@ button:active {
     width:100%;
     height:100vh; 
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -155,7 +155,7 @@ a {
     border: 2px solid black;
     background-color: white;
     min-width:50%;
-    height: 20%; 
+    height: 30%; 
 }
 
 #controls div {
