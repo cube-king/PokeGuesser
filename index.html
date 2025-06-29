@@ -17,8 +17,12 @@
                         <h1 id="entrytitle" class="micro5">PokeGuess</h1>
                         <button id="play">PLAY</button> 
                         <button id="faqbutton">FAQ / RULES</button> 
-                        <p>A site utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
-                        <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
+                        <div id="notes">
+                            <p>A site utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
+                            <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
+                            <p>Note - this project was <i>intended</i> for PC 16:9 displays, but can be used on tablet or phone 
+                                landscape-mode <br>(to varying degrees depending on provider)!</p>
+                        </div>
                     </div>
                     <div id="game" class="partition">
                         
@@ -30,7 +34,7 @@
                             <div id="hints">
                                 <ul>
                                     <li id="hint1">HP Stat: </li>
-                                    <li id="hint2">Characteristics: </li>
+                                    <li id="hint2">Flavor text: </li>
                                     <li id="hint3">Type: </li>
                                 </ul>
                             </div> 
@@ -69,7 +73,7 @@
                         <h2 class="question">How is Pokemon retrieval powered?</h2>
                         <p class="answer">We use the free PokeAPI to get information about Pokemon as well as retrieve a set of them for randomization.</p>
                         <h2 class="question">What does the "difficulty" setting affect?</h2>
-                        <p class="answer">The 'difficulty' setting affects the specificity of hints as well as the amount of points removed from a wrong guess.</p>
+                        <p class="answer">The 'difficulty' setting affects the amount of guesses as well as the amount of points removed from a wrong guess. The higher the difficulty, the less guesses and more points removed!</p>
                         <h2 class="question">What does the "set" setting affect?</h2>
                         <p class="answer">The 'set' setting affects the generation / amount of cards used! We know that newer cards are less familiar, so we added
                             a feature to control the set used - it's much easier to guess the ones you have a possibility of knowing!

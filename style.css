@@ -12,6 +12,17 @@ body {
     src: url('./fonts/Pokemon\ Classic.ttf');
 }
 
+@keyframes fadeInFromTop {
+  0% {
+    transform: translateY(-20%);
+    opacity:0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+
 * {
     font-family: Pokemon;
 }
@@ -60,6 +71,7 @@ button:active {
     border: 2px solid black;
     border-radius: 10px;
     overflow-y: hidden;
+    animation: 0.6s ease-in-out 0s 1 fadeInFromTop;
 }
 
 #test {
@@ -100,9 +112,20 @@ button:active {
     gap: 10px;
 }
 
-#title p {
+#notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
     background-color: white;
-    margin: 2px 16px;
+    margin: 2px 26px;
+    background-size:10px;
+    gap: 1px;
+}
+
+#notes * {
+    text-align: center;
 }
 
 #title * {
@@ -148,6 +171,7 @@ a {
     align-items: center;
     align-content: center;
     width: 50%;
+    height:65%;
 }
 
 #controls {
@@ -193,16 +217,43 @@ a {
     background-color: #9afb62;
     justify-content: center;
     justify-self: center;
-    visibility: hidden;
     max-width: 45vh;
     opacity: 0.7;
+    visibility: hidden;
 }
 
 #hints {
     width: 100%;
 }
 
-input, input:focus, input:active  {
+#hints * {
+    font-size: 12px;
+}
+
+#hints *:hover {
+    font-size: 14px;
+}
+
+select, input, input:focus, input:active  {
     border:2px solid black;
     border-radius: 2px;
 }
+
+#play {
+    height:70px;
+    width:140px;
+    font-size: 130%;
+    font-weight:bold;
+}
+
+#guessbutton, #giveupbutton, #play, #hints * {
+    transition:all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#play:hover, #guessbutton:hover, #giveupbutton:hover {
+    transform: scale(1.1);
+}
+
+#play:active, #guessbutton:active, #giveupbutton:hover {
+    transform: scale(1.05);
+} 

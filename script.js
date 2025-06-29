@@ -8,8 +8,10 @@ var allspecies;
 var pokemontotalamount = 1025;
 var flavortext;
 var pokestat;
+var lastguess = 4;
 var validinput = false;
-var bluramt = 16;
+var busy = false;
+var bluramt = lastguess * 4;
 var attainablescore = 1000;
 var guess = 1;
 var randomPokemonId;
@@ -59,11 +61,11 @@ async function loadPokemon() {
 
 function tryAgain() {
     guess = 1;
-    bluramt = 16; 
+    bluramt = lastguess * 4; 
     attainablescore = 1000;
     loadPokemon();
     $("#hint1").text("HP Stat: ");
-    $("#hint2").text("Characteristics: ");
+    $("#hint2").text("Flavor text: ");
     $("#hint3").text("Type: ");
     $("#pokeidentifier").css("visibility", "hidden");
 }
@@ -82,77 +84,104 @@ $("#giveupbutton").click(function() {
 $("#guessbutton").click(function() {
     validinput = false;
     var inputval = $("#guessinput").val();
-    if (!resettime) {
-        for (let i = 0; i < allpokemon.results.length; i++) {
-            if (allpokemon.results[i].name === inputval.toString().toLowerCase()) {
-                validinput = true;
-                break;
-            }
-        }
-        for (let i = 0; i < allspecies.results.length; i++) {
-            if (allspecies.results[i].name === inputval.toString().toLowerCase()) {
-                validinput = true;
-                break;
-            }
-        }
-        if (validinput) {
-            if (inputval.toString().toLowerCase() === pokemon.name || inputval.toString().toLowerCase() === pokemon.species.name) {
-                console.log("correct!");
-                score += attainablescore;
-                $("#pointslabel").text("Points: " + score);
-                $("#pokeimage").css("filter", "unset");
-                $("#pokeidentifier").text("It's " + pokemon.name + "!");
-                $("#pokeidentifier").css("visibility", "visible");
-                resettime = true;
-            } else {
-                attainablescore -= 125;
-                if (!bluramt == 0) {
-                    bluramt -= 4;
+    if (!busy) {
+        if (!resettime) {
+            for (let i = 0; i < allpokemon.results.length; i++) {
+                if (allpokemon.results[i].name === inputval.toString().toLowerCase()) {
+                    validinput = true;
+                    break;
                 }
-                $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)");
-                if (guess === 1) {
-                    for (let i = 0; i < pokemon.stats.length; i++) {
-                        if (pokemon.stats[i].stat.name === "hp") {
-                            console.log("found hp stat");
-                            console.log(pokemon.stats[i])
-                            var pokehp = pokemon.stats[i].base_stat;
-                            $("#hint1").text("HP Stat: " + pokehp);
-                        } else {
-                            console.log("no hp stat");
-                        }
-                    }
-                } else if (guess === 2) {
-                    for (let i = 0; i < pokespecies.flavor_text_entries.length; i++) {
-                        if (pokespecies.flavor_text_entries[i].language.name === "en" && !(pokespecies.flavor_text_entries[i].flavor_text).toLowerCase().includes(pokespecies.name)) {
-                            flavortext = pokespecies.flavor_text_entries[i].flavor_text.replace("\f", " ");
-                            break;
-                        } else {
-                            console.log("desc had name");
-                        }
-                    }
-                    $("#hint2").text("Flavor text: " + flavortext);
-                } else if (guess === 3) {
-                    if (pokemon.types && pokemon.types.length > 0) {
-                        $("#hint3").text("Type: " + pokemon.types[0].type.name);
-                    } else {
-                        $("#hint3").text("Type: Unknown");
-                    }
-                    $("#hint3").text("Type: " + pokemon.types[0].type.name);
-                } else if (guess === 4) {
+            }
+            for (let i = 0; i < allspecies.results.length; i++) {
+                if (allspecies.results[i].name === inputval.toString().toLowerCase()) {
+                    validinput = true;
+                    break;
+                }
+            }
+            if (validinput) {
+                if (inputval.toString().toLowerCase() === pokemon.name || inputval.toString().toLowerCase() === pokemon.species.name) {
+                    console.log("correct!");
+                    score += attainablescore;
+                    $("#pointslabel").text("Points: " + score);
                     $("#pokeimage").css("filter", "unset");
-                    resettime = true;
                     $("#pokeidentifier").text("It's " + pokemon.name + "!");
                     $("#pokeidentifier").css("visibility", "visible");
+                    resettime = true;
+                } else {
+                    attainablescore -= 125;
+                    if (!bluramt == 0) {
+                        bluramt -= 4;
+                    }
+                    $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)");
+                    if (guess != lastguess) {
+                        console.log("wrong and not last")
+                        busy = true;
+                        $("#pokeidentifier").text("Nope - try again!");
+                        $("#pokeidentifier").css("visibility", "visible");
+                        $("#pokeidentifier").css("opacity", "0.7");
+                        $("#pokeidentifier").animate({
+                            opacity: '0'
+                        }, 2000, function () {
+                            $("#pokeidentifier").css("opacity", "0.7");
+                            $("#pokeidentifier").css("visibility", "hidden");
+                            busy = false;
+                        })
+                    }
+                    if (guess === 1) {
+                        for (let i = 0; i < pokemon.stats.length; i++) {
+                            if (pokemon.stats[i].stat.name === "hp") {
+                                console.log("found hp stat");
+                                console.log(pokemon.stats[i])
+                                var pokehp = pokemon.stats[i].base_stat;
+                                $("#hint1").text("HP Stat: " + pokehp);
+                            } else {
+                                console.log("no hp stat");
+                            }
+                        }
+                    } else if (guess === 2) {
+                        for (let i = 0; i < pokespecies.flavor_text_entries.length; i++) {
+                            if (pokespecies.flavor_text_entries[i].language.name === "en" && !(pokespecies.flavor_text_entries[i].flavor_text).toLowerCase().includes(pokespecies.name)) {
+                                flavortext = pokespecies.flavor_text_entries[i].flavor_text.replace("\f", " ");
+                                break;
+                            } else {
+                                console.log("desc had name");
+                            }
+                        }
+                        $("#hint2").text("Flavor text: " + flavortext);
+                    } else if (guess === 3) {
+                        if (pokemon.types && pokemon.types.length > 0) {
+                            $("#hint3").text("Type: " + pokemon.types[0].type.name);
+                        } else {
+                            $("#hint3").text("Type: Unknown");
+                        }
+                        $("#hint3").text("Type: " + pokemon.types[0].type.name);
+                    } else if (guess === lastguess) {
+                        $("#pokeimage").css("filter", "unset");
+                        resettime = true;
+                        $("#pokeidentifier").text("It's " + pokemon.name + "!");
+                        $("#pokeidentifier").css("visibility", "visible");
+                    }
                 }
+                guess += 1;
             }
-            guess += 1;
+            else { 
+                busy = true; 
+                $("#pokeidentifier").text("Not a valid Pokemon."); 
+                $("#pokeidentifier").css("visibility", "visible");
+                $("#pokeidentifier").animate({
+                    opacity: '0'
+                }, 2000, function () {
+                    $("#pokeidentifier").css("opacity", "0.7");
+                    $("#pokeidentifier").css("visibility", "hidden"); 
+                    busy = false;
+                })
+            }
+
+        } else {
+            resettime = false;
+            tryAgain();
         }
-
-    } else {
-        resettime = false;
-        tryAgain();
     }
-
 });
 
 async function getAllPokemon() {
