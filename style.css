@@ -12,7 +12,7 @@ body {
     src: url('./fonts/Pokemon\ Classic.ttf');
 }
 
-p, h2 {
+* {
     font-family: Pokemon;
 }
 
@@ -22,6 +22,24 @@ h2 {
 
 .micro5 {
     font-family: Micro5;
+}
+
+button {
+    font-family: 'Pokemon';
+    font-weight:800;
+    text-shadow: 2px 2px #6e6e6e;
+    background-color: black;
+    color:white; 
+    border: 2px solid white; 
+    border-radius: 10px;
+} 
+ 
+button:hover {
+    background-color: #222222;
+}
+
+button:active { 
+    background-color: #2e2e2e;
 }
 
 #content {
@@ -55,7 +73,7 @@ h2 {
 }
 
 #game { 
-    background-color: azure;
+    background-color: #e0ffc6;
 }
 
 #faq {
@@ -79,11 +97,21 @@ h2 {
     justify-content: center;
     align-items: center;
     align-content: center;
+    gap:10px
+}
+
+#title * {
+    margin-left:15px;
 }
 
 #entrytitle {
     font-size: 5em; 
     text-shadow: 2px 2px 0px #a9ff63;
+    transition:all 0.2s ease-in-out;
+}
+
+#entrytitle:hover {
+    transform: scale(1.15) rotate(-3deg);
 }
 
 .partition { 
@@ -96,3 +124,56 @@ a {
     margin:0;
     padding:0;
 }
+
+#game {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap:10px
+}
+
+#gamecontent {
+    border:2px solid black; 
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width:40%;
+}
+
+#controls {
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 2px;
+    border: 2px solid black;
+    background-color: white;
+    width:40%;
+    height: 20%; 
+}
+
+#controls div {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px
+}
+
+#back {
+    margin-top:20px;
+}
+
+#pokeimage {
+    filter: contrast(0%) brightness(0%);
+    image-rendering: pixelated;
+    height:45vh;
+    transition: filter 0.2s ease-in;
+} 

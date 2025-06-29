@@ -21,21 +21,37 @@
                         <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
                     </div>
                     <div id="game" class="partition">
-                        <div id="gamecontent"></div>
-                        <div id="controls"> 
-                            <input type="text" placeholder="Put your guess here!"></input>
-                            <button id="guessbutton">Guess!</button>
-                            <p>Difficulty:</p>
-                            <button id="hintbutton">Hint</button>
+                        <div id="gamecontent">
+                            <div id="imagebox">
+                                <img src="" id="pokeimage">
+                            </div>
+                            <div id="hints">
+                                <ul>
+                                    <li id="hint1">HP Stat: </li>
+                                    <li id="hint2">Characteristics: </li>
+                                    <li id="hint3">Type: </li>
+                                </ul>
+                            </div> 
+                        </div> 
+                        <div id="controls">
+                            <div id="inputs"> 
+                                <input type="text" placeholder="Put your guess here!" id="guessinput"></input>
+                                <button id="guessbutton">Guess!</button>
+                                <button id="hintbutton">Hint</button>
+                            </div>
+                            <div id="diff">
+                                <p>Difficulty:</p>
                                 <select name="difficulty" id="difficulty">
                                     <option value="easy">Easy</option>
                                     <option value="medium">Medium</option>
                                     <option value="hard">Hard</option>
                                     <option value="oneshot">Oneshot</option>
                                 </select>
+                            </div>
                         </div>
                     </div>
                     <div id="faq" class="partition">
+                        <button id="back">Back</button>
                         <h2 class="question" id="firstquestion">How do I guess?</h2>
                         <p class="answer">Simply enter your guess in the entry field then click the "Guess" button!</p>
                         <h2 class="question">Where can I find the source code for this application?</h2>
