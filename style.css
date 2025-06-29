@@ -131,7 +131,7 @@ a {
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap:10px
+    gap:10px;
 }
 
 #gamecontent {
@@ -164,7 +164,7 @@ a {
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: 10px
+    gap: 10px;
 }
 
 #back {
@@ -177,3 +177,22 @@ a {
     height:45vh;
     transition: filter 0.2s ease-in;
 } 
+
+#imagebox {
+    height:45vh;
+    width:45vh;
+}
+
+#pokeidentifier {
+    transform:translateY(-250px);
+    background-color: #9afb62;
+    justify-content: center;
+    justify-self: center;
+    visibility: hidden;
+    max-width: 45vh;
+    opacity: 0.7;
+}
+
+#hints {
+    width: 100%;
+}
