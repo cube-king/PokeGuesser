@@ -74,9 +74,10 @@ button:active {
     animation: 0.6s ease-in-out 0s 1 fadeInFromTop;
 }
 
-#test {
+#partitioncontainer {
     transform: translateY(0vh);
     transition: transform 0.4s ease-in-out;
+    overflow:hidden; 
 }
 
 #firstquestion {
@@ -91,6 +92,8 @@ button:active {
 #faq {
     background-color: black;
     color: white;
+    overflow-y: scroll;
+    scrollbar-color: white black;
 }
 
 #faq * {
@@ -165,6 +168,22 @@ i {
     align-items: center;
     align-content: center;
     gap: 10px;
+    background: transparent;
+    overflow:hidden;
+}
+
+#game::before {
+    content: "";
+    z-index: -1; 
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    y:-500px;
+    bottom:10px; 
+    background-size: 20%;
+    background-repeat: repeat;
+    background-image: url("https://hc-cdn.hel1.your-objectstorage.com/s/v3/e1b70eb3d2324688695605ff4fa6e2e314673b50_saton55.jpeg");
+    transform: rotate(45deg);  
 }
 
 #gamecontent {
@@ -266,3 +285,4 @@ select, input, input:focus, input:active  {
 #controls * p, #controls p{
     margin: 0 12px;
 } 
+

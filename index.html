@@ -13,20 +13,20 @@
         <audio id="pokemoncry"></audio>
         <div id="content">
             <div id="maincontainer"> 
-                <div id="test">
+                <div id="partitioncontainer">
                     <div id="title" class="partition">
                         <h1 id="entrytitle" class="micro5">PokeGuess</h1>
                         <button id="play">PLAY</button> 
                         <button id="faqbutton">FAQ / RULES</button> 
                         <div id="notes">
-                            <p>A site utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
+                            <p>An open-source game utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
                             <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
                             <p>Note - this project was <i>intended</i> for PC 16:9 displays, but can be used on tablet or phone 
                                 landscape-mode <br>(to varying degrees depending on provider)!</p>
                         </div>
+                        <a href="https://github.com/cube-king"><small><button>My GitHub</button></small></a>
                     </div>
                     <div id="game" class="partition">
-                        
                         <div id="gamecontent">
                             <div id="imagebox">
                                 <img src="" id="pokeimage">
@@ -50,16 +50,16 @@
                                 <p>Difficulty: (currently non-functional)</p>
                                 <select name="difficulty" id="difficulty">
                                     <option value="easy">Easy</option>
-                                    <option value="medium">Medium</option>
+                                    <option value="medium" selected="selected">Medium</option> 
                                     <option value="hard">Hard</option>
                                     <option value="oneshot">Oneshot</option>
                                 </select>
                             </div>
                             <div id="set">
-                                <p>Generation (including previous): </p>
+                                <p>Generations (including previous): </p> 
                                 <input type="number" id="generation" min="1" max="9" value="9">
                             </div> 
-                            <button id="apply">Apply Changes</button> 
+                            <button id="apply">Apply Generation</button> 
                             <p id="pointslabel"><b>Points: 0</b></p>
                             <p><small>Note: click the image to hear the creature's "cry"!</small></p>
                         </div>
@@ -79,6 +79,11 @@
                         <h2 class="question">What does the "set" setting affect?</h2>
                         <p class="answer">The 'set' setting affects the generation / amount of cards used! We know that newer cards are less familiar, so we added
                             a feature to control the set used - it's much easier to guess the ones you have a possibility of knowing!
+                        </p>
+                        <br>   
+                        <h2 class="question">Lastest update notes?</h2>
+                        <p class="answer">
+                            Added this update note section, cries, CSS, and beautification / animations and visual changes! Also added scrolling in this menu :)
                         </p>
                     </div>
                 </div>

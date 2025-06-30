@@ -21,15 +21,15 @@ const generations = [151, 251, 386, 493, 649, 721, 809, 905, 1025]
 
 $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)")
 $("#play").click(function() {
-    $("#test").css("transform", "translateY(-90vh)");
+    $("#partitioncontainer").css("transform", "translateY(-90vh)"); 
 });
 
 $("#faqbutton").click(function() {
-    $("#test").css("transform", "translateY(-180vh)");
+    $("#partitioncontainer").css("transform", "translateY(-180vh)");
 });
 
 $("#back").click(function() {
-    $("#test").css("transform", "translateY(0vh)");
+    $("#partitioncontainer").css("transform", "translateY(0vh)");
 });
 
 function randomNumber(min, max) {
@@ -106,6 +106,13 @@ $("#guessbutton").click(function() {
             }
             if (validinput) {
                 if (inputval.toString().toLowerCase() === pokemon.name || inputval.toString().toLowerCase() === pokemon.species.name) {
+                    $("#pointslabel").animate({
+                        fontSize:"20",
+                    }, 200, function () { 
+                        $("#pointslabel").animate({
+                            fontSize:"16",
+                        }, 200) 
+                    });  
                     console.log("correct!");
                     score += attainablescore;
                     $("#pointslabel").text("Points: " + score);
@@ -133,7 +140,12 @@ $("#guessbutton").click(function() {
                             busy = false;
                         })
                     }
-                    if (guess === 1) {
+                    if (guess === lastguess) {
+                        $("#pokeimage").css("filter", "unset");
+                        resettime = true;
+                        $("#pokeidentifier").text("It's " + pokemon.name + "!");
+                        $("#pokeidentifier").css("visibility", "visible");
+                    } else if (guess === 1) {
                         for (let i = 0; i < pokemon.stats.length; i++) {
                             if (pokemon.stats[i].stat.name === "hp") {
                                 console.log("found hp stat");
@@ -161,12 +173,7 @@ $("#guessbutton").click(function() {
                             $("#hint3").text("Type: Unknown");
                         }
                         $("#hint3").text("Type: " + pokemon.types[0].type.name);
-                    } else if (guess === lastguess) {
-                        $("#pokeimage").css("filter", "unset");
-                        resettime = true;
-                        $("#pokeidentifier").text("It's " + pokemon.name + "!");
-                        $("#pokeidentifier").css("visibility", "visible");
-                    }
+                    } 
                 }
                 guess += 1;
             }
@@ -206,6 +213,20 @@ $("#generation").change(function () {
     pokemontotalamount = generations[$(this).val() - 1];
     console.log(pokemontotalamount);
 });
+
+$("#difficulty").change(function () {  
+    if ($(this).val() == "easy") {
+        lastguess = 5; 
+    } else if ($(this).val() == "medium") { 
+        lastguess = 4; 
+    } else if ($(this).val() == "hard") {
+        lastguess = 3;
+    } else if ($(this).val() == "oneshot") { 
+        lastguess = 2; 
+    }  
+    bluramt = lastguess * 4;
+    $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)");
+})
 
 getAllPokemon();
 loadPokemon();
