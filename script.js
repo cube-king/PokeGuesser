@@ -17,7 +17,17 @@ var guess = 1;
 var randomPokemonId;
 var resettime = false;
 
-const generations = [151, 251, 386, 493, 649, 721, 809, 905, 1025]
+const generations = [151, 251, 386, 493, 649, 721, 809, 905, 1025];
+const backgroundurls = [
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3760c346fc12d17ee6f29b0b7eb0dfdc738f9c71_a1tkoxq.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/913d204230dcdcb59fb9041d35bd22f1b73a78fc_7dcs9kd.jpeg",    
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/58ed458de7e351c0fcc9a8eeae11d8ca79efe9ff_q87wt7i.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/e1b70eb3d2324688695605ff4fa6e2e314673b50_saton55.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/8b223eab074beeea6000b28a2af806e70a4b9b98_lcsdtfh.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/d0133d6e2e32d46c1feb3f00d54effa6ae0a795a_du6pij3.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/588aa88cb08c55e794319298bed1c43d8cc53541_gx5ynz3.jpeg",
+    "https://hc-cdn.hel1.your-objectstorage.com/s/v3/aae41fdb75e78c617542cd8936c4f837f41d0005_mvyzg0o.jpeg"
+];
 
 $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)")
 $("#play").click(function() {
@@ -28,7 +38,11 @@ $("#faqbutton").click(function() {
     $("#partitioncontainer").css("transform", "translateY(-180vh)");
 });
 
-$("#back").click(function() {
+$("#themebutton").click(function() {
+    $("#partitioncontainer").css("transform", "translateY(-270vh)");
+});
+
+$(".back").click(function() {
     $("#partitioncontainer").css("transform", "translateY(0vh)");
 });
 
@@ -208,6 +222,20 @@ async function getAllPokemon() {
     console.log(allpokemon);
     console.log(allspecies);
 }
+
+function updateBGColor() {
+    $("#content").css("background","repeating-conic-gradient(" + $("#primarycolor").val() +" 0% 25%, " + $("#secondarycolor").val() + " 25% 50%)");
+    $("#content").css("background-size","100px 100px");
+}
+
+$(".colorchange").change(function () {
+    updateBGColor(); 
+});
+
+$("#imagetheme").change(function () {
+    $('#game').css("--url", "url("+backgroundurls[$("#imagetheme").val()]+")");
+    console.log($("#imagetheme").val());
+});  
 
 $("#generation").change(function () { 
     pokemontotalamount = generations[$(this).val() - 1];

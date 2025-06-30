@@ -18,6 +18,7 @@
                         <h1 id="entrytitle" class="micro5">PokeGuess</h1>
                         <button id="play">PLAY</button> 
                         <button id="faqbutton">FAQ / RULES</button> 
+                        <button id="themebutton">THEMING / MISC</button> 
                         <div id="notes">
                             <p>An open-source game utilizing PokeAPI to create a comprehensive Pokemon guessing game (in the spirit of "Who's That Pokemon")!</p>
                             <p>This project was created for the 2025 Hack Club Summer of Making! <a href="https://hackclub.com">https://hackclub.com</a></p>
@@ -65,7 +66,7 @@
                         </div>
                     </div>
                     <div id="faq" class="partition">
-                        <button id="back">Back</button>
+                        <button class="back">Back</button>
                         <h2 class="question" id="firstquestion">How do I guess?</h2>
                         <p class="answer">Simply enter your guess in the entry field then click the "Guess" button!</p>
                         <h2 class="question">Where can I find the source code for this application?</h2>
@@ -86,6 +87,23 @@
                             Added this update note section, cries, CSS, and beautification / animations and visual changes! Also added scrolling in this menu :)
                         </p>
                     </div>
+                    <div id="themes" class="partition">
+                        <span id="themebg"></span>
+                        <button class="back">Back</button>
+                        <br><br>
+                        <input type="color" id="primarycolor" class="colorchange" value="#aeff7e">
+                        <input type="color" id="secondarycolor" class="colorchange" value="#c8ff9b">
+                        <select name="imagetheme" id="imagetheme">
+                            <option value="0">Pikachu</option>
+                            <option value="1">Eevee</option>
+                            <option value="2">Squirtle</option>
+                            <option value="3" selected>Bulbasaur</option>
+                            <option value="4">Charmander</option>
+                            <option value="5">Vulpix</option>
+                            <option value="6">Geodude</option>
+                            <option value="7">Slowpoke and Cloyster</option>
+                        </select> 
+                    </div> 
                 </div>
             </div> 
         </div>
