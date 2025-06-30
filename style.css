@@ -54,7 +54,7 @@ button:active {
 }
 
 #content {
-    background: repeating-conic-gradient(#9afb62 0% 25%, #c8ff9b 25% 50%);
+    background: repeating-conic-gradient(#aeff7e 0% 25%, #c8ff9b 25% 50%);
     background-size: 100px 100px;
     width: 100%;
     height: 100vh;
@@ -83,10 +83,6 @@ button:active {
 #firstquestion {
     margin-top: 0;
     padding-top: 0.83em;
-}
-
-#game {
-    background-color: #e0ffc6;
 }
 
 #faq {
@@ -137,7 +133,7 @@ button:active {
 
 #entrytitle {
     font-size: 6em;
-    text-shadow: 2px 2px 0px #a9ff63;
+    text-shadow: 2px 2px 0px #aeff7e;
     transition: all 0.2s ease-in-out;
 }
 
@@ -238,7 +234,7 @@ i {
 
 #pokeidentifier {
     transform: translateY(-250px);
-    background-color: #9afb62;
+    background-color: #aeff7e;  
     justify-content: center;
     justify-self: center;
     max-width: 45vh;
