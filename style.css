@@ -128,12 +128,12 @@ button:active {
     text-align: center;
 }
 
-#title * {
-    margin-left: 15px;
+#title p {
+    margin: 15px;
 }
 
 #entrytitle {
-    font-size: 5em;
+    font-size: 6em;
     text-shadow: 2px 2px 0px #a9ff63;
     transition: all 0.2s ease-in-out;
 }
@@ -149,6 +149,11 @@ button:active {
 
 a {
     color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+}
+
+i { 
     margin: 0;
     padding: 0;
 }
@@ -180,7 +185,7 @@ a {
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: 2px;
+    gap: 5px;
     border: 2px solid black;
     background-color: white;
     min-width: 50%;
@@ -256,4 +261,8 @@ select, input, input:focus, input:active  {
 
 #play:active, #guessbutton:active, #giveupbutton:hover {
     transform: scale(1.05);
+} 
+
+#controls * p, #controls p{
+    margin: 0 12px;
 } 

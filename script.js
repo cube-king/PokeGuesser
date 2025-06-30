@@ -74,6 +74,12 @@ $("#apply").click(function () {
     tryAgain();
 })
  
+$("#pokeimage").click(async function () {
+    $("#pokemoncry").attr("src",pokemon.cries.latest);
+    $("#pokemoncry").prop('volume', 0.4);
+    $("#pokemoncry")[0].play();
+})
+
 $("#giveupbutton").click(function() { 
     resettime = true;
     $("#pokeimage").css("filter", "unset");
