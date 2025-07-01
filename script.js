@@ -100,6 +100,13 @@ $("#giveupbutton").click(function() {
     $("#pokeimage").css("filter", "unset");
     $("#pokeidentifier").text("It's " + pokemon.name + "!");
     $("#pokeidentifier").css("visibility", "visible");
+    $("#pokeidentifier").animate({
+        opacity: "0"
+    }, 3000, function () {
+        $("#pokeidentifier").css("opacity", "0.7");
+        $("#pokeidentifier").css("visibility", "hidden"); 
+        busy = false;
+    })
 })
 
 $("#guessbutton").click(function() {
@@ -136,6 +143,13 @@ $("#guessbutton").click(function() {
                     $("#pokeimage").css("filter", "unset");
                     $("#pokeidentifier").text("It's " + pokemon.name + "!");
                     $("#pokeidentifier").css("visibility", "visible");
+                    $("#pokeidentifier").animate({
+                        opacity: "0"
+                    }, 3000, function () {
+                        $("#pokeidentifier").css("opacity", "0.7");
+                        $("#pokeidentifier").css("visibility", "hidden"); 
+                        busy = false;
+                    })
                     resettime = true;
                 } else {
                     attainablescore -= 125;
