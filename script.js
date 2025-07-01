@@ -8,6 +8,7 @@ var allspecies;
 var pokemontotalamount = 1025;
 var flavortext;
 var pokestat;
+var alltimescore;
 var lastguess = 4;
 var validinput = false;
 var busy = false;
@@ -90,7 +91,7 @@ $("#apply").click(function () {
  
 $("#pokeimage").click(async function () {
     $("#pokemoncry").attr("src",pokemon.cries.latest);
-    $("#pokemoncry").prop('volume', 0.4);
+    $("#pokemoncry").prop("volume", 0.4);
     $("#pokemoncry")[0].play();
 })
 
@@ -129,6 +130,8 @@ $("#guessbutton").click(function() {
                     });  
                     console.log("correct!");
                     score += attainablescore;
+                    localStorage.setItem("score", Number(alltimescore) + attainablescore);
+                    $("#atslabel").text("Your all-time / total score: " + alltimescore);
                     $("#pointslabel").text("Points: " + score);
                     $("#pokeimage").css("filter", "unset");
                     $("#pokeidentifier").text("It's " + pokemon.name + "!");
@@ -147,7 +150,7 @@ $("#guessbutton").click(function() {
                         $("#pokeidentifier").css("visibility", "visible");
                         $("#pokeidentifier").css("opacity", "0.7");
                         $("#pokeidentifier").animate({
-                            opacity: '0'
+                            opacity: "0"
                         }, 2000, function () {
                             $("#pokeidentifier").css("opacity", "0.7");
                             $("#pokeidentifier").css("visibility", "hidden");
@@ -196,7 +199,7 @@ $("#guessbutton").click(function() {
                 $("#pokeidentifier").text("Not a valid Pokemon."); 
                 $("#pokeidentifier").css("visibility", "visible");
                 $("#pokeidentifier").animate({
-                    opacity: '0'
+                    opacity: "0"
                 }, 2000, function () {
                     $("#pokeidentifier").css("opacity", "0.7");
                     $("#pokeidentifier").css("visibility", "hidden"); 
@@ -229,12 +232,15 @@ function updateBGColor() {
 }
 
 $(".colorchange").change(function () {
+    localStorage.setItem("primarycolor",$("#primarycolor").val());
+    localStorage.setItem("secondarycolor",$("#secondarycolor").val());
     updateBGColor(); 
 });
 
 $("#imagetheme").change(function () {
-    $('#game').css("--url", "url("+backgroundurls[$("#imagetheme").val()]+")");
+    $("#game").css("--url", "url("+backgroundurls[$("#imagetheme").val()]+")");
     console.log($("#imagetheme").val());
+    localStorage.setItem("tilingimg", $("#imagetheme").val())
 });  
 
 $("#generation").change(function () { 
@@ -256,5 +262,28 @@ $("#difficulty").change(function () {
     $("#pokeimage").css("filter", "contrast(0%) brightness(0%) blur(" + bluramt + "px)");
 })
 
+function loadThemePrefs() {
+    if (localStorage.getItem("primarycolor") !== null || localStorage.getItem("secondarycolor") !== null) {
+        $("#content").css("background","repeating-conic-gradient(" + localStorage.getItem("primarycolor") +" 0% 25%, " + localStorage.getItem("secondarycolor") + " 25% 50%)");
+        $("#content").css("background-size","100px 100px");
+    }
+    if (localStorage.getItem("tilingimg") !== null) {
+        $("#game").css("--url", "url("+backgroundurls[Number(localStorage.getItem("tilingimg"))]+")");
+        $("#imagetheme").children().eq(Number(localStorage.getItem("tilingimg"))).attr('selected', 'selected');
+    } else {
+        $("#imagetheme").children().eq(3).attr('selected', 'selected');
+    }
+}
+
+if (localStorage.getItem("score") !== null) {
+    alltimescore = localStorage.getItem("score");
+    console.log("score found! " + Number(alltimescore));
+} else {
+    localStorage.setItem("score", "0");
+}
+
+$("#atslabel").text("Your all-time / total score: " + alltimescore);
+
+loadThemePrefs();
 getAllPokemon();
 loadPokemon();
